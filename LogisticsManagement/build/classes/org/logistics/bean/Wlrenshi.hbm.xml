@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-28 15:30:52 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.logistics.bean.Wlrenshi" table="WLRENSHI">
+        <id name="wlrenshiworknum" type="java.lang.String">
+            <column name="WLRENSHIWORKNUM" />
+            <generator class="increment" />
+        </id>
+        <property name="wlrenshiname" type="java.lang.String">
+            <column name="WLRENSHINAME" />
+        </property>
+        <property name="wlrenshisex" type="java.lang.String">
+            <column name="WLRENSHISEX" />
+        </property>
+        <property name="wlrenshichusheng" type="java.lang.String">
+            <column name="WLRENSHICHUSHENG" />
+        </property>
+        <property name="wlrenshicardno" type="java.lang.String">
+            <column name="WLRENSHICARDNO" />
+        </property>
+        <property name="wlrenshiaddress" type="java.lang.String">
+            <column name="WLRENSHIADDRESS" />
+        </property>
+        <property name="wlrenshitel" type="java.lang.String">
+            <column name="WLRENSHITEL" />
+        </property>
+        <many-to-one name="wlbumen" class="org.logistics.bean.Wlbumen" fetch="join">
+            <column name="WLBUMEN" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

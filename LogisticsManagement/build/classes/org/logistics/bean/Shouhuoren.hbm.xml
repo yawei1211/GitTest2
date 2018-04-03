@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-28 15:30:52 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.logistics.bean.Shouhouren" table="SHOUHOUREN">
+        <id name="shrnum" type="java.lang.String">
+            <column name="SHRNUM" />
+            <generator class="increment" />
+        </id>
+        <property name="shrgongsi" type="java.lang.String">
+            <column name="SHRGONGSI" />
+        </property>
+        <property name="shrname" type="java.lang.String">
+            <column name="SHRNAME" />
+        </property>
+        <property name="shradd" type="java.lang.String">
+            <column name="SHRADD" />
+        </property>
+        <property name="shrtel" type="java.lang.String">
+            <column name="SHRTEL" />
+        </property>
+        <property name="shremail" type="java.lang.String">
+            <column name="SHREMAIL" />
+        </property>
+        <property name="shrordernum" type="java.lang.String">
+            <column name="SHRORDERNUM" />
+        </property>
+        <property name="shrtype" type="java.lang.String">
+            <column name="SHRTYPE" />
+        </property>
+        <property name="shrbeizhu" type="java.lang.String">
+            <column name="SHRBEIZHU" />
+        </property>
+    </class>
+</hibernate-mapping>

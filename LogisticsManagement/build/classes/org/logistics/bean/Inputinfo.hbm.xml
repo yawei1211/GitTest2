@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-28 15:30:52 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.logistics.bean.Inputinfo" table="INPUTINFO">
+        <id name="inputnum" type="java.lang.String">
+            <column name="INPUTNUM" />
+            <generator class="increment" />
+        </id>
+        <property name="inputddnum" type="java.lang.String">
+            <column name="INPUTDDNUM" />
+        </property>
+        <property name="inputcpleibie" type="java.lang.String">
+            <column name="INPUTCPLEIBIE" />
+        </property>
+        <property name="inputcpname" type="java.lang.String">
+            <column name="INPUTCPNAME" />
+        </property>
+        <property name="inputsuoshu" type="java.lang.String">
+            <column name="INPUTSUOSHU" />
+        </property>
+        <property name="inputcpnum" type="java.lang.String">
+            <column name="INPUTCPNUM" />
+        </property>
+        <property name="inputcpxianghao" type="java.lang.String">
+            <column name="INPUTCPXIANGHAO" />
+        </property>
+        <property name="inputcpshuliang" type="java.lang.String">
+            <column name="INPUTCPSHULIANG" />
+        </property>
+        <property name="inputshijirukku" type="java.lang.String">
+            <column name="INPUTSHIJIRUKKU" />
+        </property>
+        <property name="inputdanwei" type="java.lang.String">
+            <column name="INPUTDANWEI" />
+        </property>
+        <property name="inputrutime" type="java.lang.String">
+            <column name="INPUTRUTIME" />
+        </property>
+        <property name="inputrutype" type="java.lang.String">
+            <column name="INPUTRUTYPE" />
+        </property>
+        <property name="inputbeizhu" type="java.lang.String">
+            <column name="INPUTBEIZHU" />
+        </property>
+    </class>
+</hibernate-mapping>
