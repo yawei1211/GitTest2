@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+<tx:advice id="myAdvice" transaction-manager="transactionManager">
+	<tx:attributes>
+		<tx:method name="add*" propagation="REQUIRED"/>
+		<tx:method name="update*" propagation="REQUIRED"/>
+		<tx:method name="delete*" propagation="REQUIRED"/>
+		<tx:method name="*" propagation="SUPPORTS" read-only="true"/>
+	</tx:attributes>
+</tx:advice>
+
+<aop:config>
+	<aop:pointcut expression="execution(* org.logistics.dao.*.*(..))" id="pointCut"/>
+	<aop:advisor advice-ref="myAdvice" pointcut-ref="pointCut"/>
+</aop:config>
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="url" value="jdbc:mysql:///test"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="root"></property>
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+</bean>
+
+<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	<property name="dataSource" ref="dataSource"></property>
+</bean>
+
+<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+		<!--  dao层   -->
+	<bean id="wluserDao" class="org.logistics.dao.impl.WluserDaoImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="wlrenshiDao" class="org.logistics.dao.impl.WlrenshiDaoImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="wlbumenDao" class="org.logistics.dao.impl.WlbumenDaoImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="shouhuorenDao" class="org.logistics.dao.impl.ShouhuorenDaoImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+		
+	<bean id="outputinfoDao" class="org.logistics.dao.impl.OutputinfoDaoImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="khorderDao" class="org.logistics.dao.impl.KhorderDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="khinfoDao" class="org.logistics.dao.impl.KhinfoDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="kcinfoDao" class="org.logistics.dao.impl.KcinfoDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="inputinfoDao" class="org.logistics.dao.impl.InputinfoDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="ddinfoDao" class="org.logistics.dao.impl.DdinfoDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	<!-- service层 -->
+	<bean id="wluserService" class="org.logistics.service.impl.WluserServiceImpl">
+		<property name="wluserDao" ref="wluserDao"></property>
+	</bean>
+	
+	<bean id="wluserService" class="org.logistics.service.impl.WlrenshiServiceImpl">
+		<property name="wluserDao" ref="wluserDao"></property>
+	</bean>
+	
+	<bean id="wlbumenService" class="org.logistics.service.impl.WlbumenServiceImpl">
+		<property name="wlbumenDao" ref="wlbumenDao"></property>
+	</bean>
+	
+	<bean id="shouhuorenService" class="org.logistics.service.impl.ShouhuorenServiceImpl">
+		<property name="shouhuorenDao" ref="shouhuorenDao"></property>
+	</bean>
+	
+	<bean id="outputinfoDao" class="org.logistics.service.impl.OutputinfoServiceImpl">
+		<property name="outputinfoDao" ref="outputinfoDao"></property>
+	</bean>
+	
+	<bean id="khorderService" class="org.logistics.service.impl.KhorderServiceImpl">
+		<property name="khorderDao" ref="khorderDao"></property>
+	</bean>
+	
+	<bean id="khinfoService" class="org.logistics.service.impl.KhinfoServiceImpl">
+		<property name="khinfoDao" ref="khinfoDao"></property>
+	</bean>
+	
+	<bean id="kcinfoService" class="org.logistics.service.impl.KcinfoServiceImpl">
+		<property name="kcinfoDao" ref="kcinfoDao"></property>
+	</bean>
+	
+	<bean id="inputinfoService" class="org.logistics.service.impl.InputinfoServiceImpl">
+		<property name="inputinfoDao" ref="inputinfoDao"></property>
+	</bean>
+	
+	<bean id="ddinfoService" class="org.logistics.service.impl.DdinfoServiceImpl">
+		<property name="ddinfoDao" ref="ddinfoDao"></property>
+	</bean>
+	
+		<!--  action  -->
+	<bean id="userAction" class="cn.seven.action.UserAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+	
+    <bean id="ordersAction" class="cn.seven.action.OrdersAction">
+        <property name="ordersService" ref="ordersService"></property>
+    </bean>
+    <bean id="cityAction" class="cn.seven.action.CityAction">
+        <property name="cityService" ref="cityService"></property>
+    </bean>
+    <bean id="scenicAction" class="cn.seven.action.ScenicAction">
+        <property name="scenicService" ref="scenicService"></property>
+    </bean>
+    <bean id="detailAction" class="cn.seven.action.DetailAction">
+        <property name="detailService" ref="detailService"></property>
+        <property name="mealService" ref="mealService"></property>
+    </bean>
+    <bean id="mealAction" class="cn.seven.action.MealAction">
+        <property name="mealService" ref="mealService"></property>
+    </bean>
+</beans>
