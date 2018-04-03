@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-28 15:30:52 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.logistics.bean.Khinfo" table="KHINFO">
+        <id name="khinfonum" type="java.lang.String">
+            <column name="KHINFONUM" />
+            <generator class="increment" />
+        </id>
+        <property name="khinfogsname" type="java.lang.String">
+            <column name="KHINFOGSNAME" />
+        </property>
+        <property name="khinfogsadd" type="java.lang.String">
+            <column name="KHINFOGSADD" />
+        </property>
+        <property name="khinfoper" type="java.lang.String">
+            <column name="KHINFOPER" />
+        </property>
+        <property name="khinfotel" type="java.lang.String">
+            <column name="KHINFOTEL" />
+        </property>
+        <property name="khinfoemail" type="java.lang.String">
+            <column name="KHINFOEMAIL" />
+        </property>
+        <property name="khinfoordernum" type="java.lang.String">
+            <column name="KHINFOORDERNUM" />
+        </property>
+        <property name="khinfobeizhu" type="java.lang.String">
+            <column name="KHINFOBEIZHU" />
+        </property>
+    </class>
+</hibernate-mapping>
