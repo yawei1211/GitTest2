@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.test.mapper.UserMapper">
+ 
+    <resultMap id="userMap" type="org.test.bean.Student" >
+     <id  column="id" property="id"/>
+     <result column="name" property="name" />
+     <result column="age" property="age" />
+     <result column="mobile" property="mobile" />
+     <result column="email" property="email" />
+     
+     <result column="addtime" property="addtime" />
+  </resultMap>
+  
+  <!-- 查询 -->
+   <select id="selectStudent" resultMap="usermap"  resultType="org.test.bean.Student"> 
+     select * from student
+   </select>
+  
+  
+   <insert id="addStudent" >
+  insert into Student(name,age,mobile,email,classid,addtime) values
+  (#{name},#{age},#{mobile},#{email},#{classid},#{addtime})
+  </insert>
+  
+</mapper>
